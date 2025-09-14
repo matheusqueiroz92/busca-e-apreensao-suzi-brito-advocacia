@@ -196,6 +196,8 @@ export function Depoimentos() {
                           <Image
                             src={depoimento.foto}
                             alt={depoimento.nome}
+                            width={48}
+                            height={48}
                             className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md"
                           />
                           <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-secondary rounded-full flex items-center justify-center">
