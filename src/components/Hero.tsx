@@ -21,7 +21,7 @@ const Hero = () => {
     "https://pub-d08549843b554d41b1dc2a9609740f32.r2.dev/Design sem nome (1).mp4",
   ];
 
-  const videoUrl = videoUrls[0]; // Teste com a primeira URL
+  const videoUrl = null; // Temporariamente desabilitado para teste
 
   useEffect(() => {
     if (heroRef.current) {
@@ -170,7 +170,7 @@ const Hero = () => {
                   {/* Overlay sutil para melhorar legibilidade */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none rounded-xl"></div>
                 </button>
-              ) : (
+              ) : videoUrl ? (
                 <video
                   controls
                   autoPlay
@@ -182,6 +182,12 @@ const Hero = () => {
                 >
                   <source src={videoUrl} type="video/mp4" />
                 </video>
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-gray-100 rounded-xl">
+                  <p className="text-gray-500">
+                    Vídeo temporariamente indisponível
+                  </p>
+                </div>
               )}
             </div>
           </div>
