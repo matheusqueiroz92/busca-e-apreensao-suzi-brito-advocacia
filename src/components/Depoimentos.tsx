@@ -186,7 +186,7 @@ export function Depoimentos() {
 
                       {/* Depoimento */}
                       <blockquote className="text-sm md:text-base text-foreground leading-relaxed mb-6 italic">
-                        "{depoimento.depoimento}"
+                        &quot;{depoimento.depoimento}&quot;
                       </blockquote>
 
                       {/* Informações do cliente */}
