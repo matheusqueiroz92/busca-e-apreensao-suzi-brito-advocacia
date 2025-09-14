@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { trackGTMEvent, trackFormSubmit, GTM_EVENTS } from "@/config/gtm";
 
 const contactSchema = z.object({
   nome: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
@@ -33,6 +34,19 @@ export function Contato() {
 
   const onSubmit = async (data: ContactForm) => {
     setIsSubmitting(true);
+
+    // Rastrear evento de contato no Google Tag Manager
+    trackFormSubmit("Formulário de Contato", {
+      form_type: "contact",
+      lead_type: "consultation",
+    });
+
+    trackGTMEvent(GTM_EVENTS.CONTACT, {
+      event_category: "engagement",
+      event_label: "contact_form",
+      value: 1,
+    });
+
     // Simular envio do formulário
     await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log("Dados do formulário:", data);

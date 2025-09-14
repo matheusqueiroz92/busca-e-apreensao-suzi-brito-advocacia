@@ -94,7 +94,7 @@ const Hero = () => {
                 className="group relative bg-gradient-to-r from-primary via-primary to-secondary hover:from-secondary hover:to-primary text-primary-foreground px-10 py-6 text-xl font-bold animate-button-glow transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden border-0"
                 onClick={() =>
                   window.open(
-                    "https://wa.me/5571999999999?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F",
+                    "https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F",
                     "_blank"
                   )
                 }
@@ -194,7 +194,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
         <button
           className="animate-bounce"
           onClick={() => {
@@ -204,7 +204,7 @@ const Hero = () => {
         >
           <ArrowRight className="w-6 h-6 text-primary hover:text-secondary hover:scale-150 transition-all duration-300 rotate-90" />
         </button>
-      </div>
+      </div> */}
     </section>
   );
 };

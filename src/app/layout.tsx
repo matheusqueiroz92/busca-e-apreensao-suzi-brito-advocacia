@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import GoogleTagManager from "@/components/GoogleTagManager";
+import GoogleTagManagerNoScript from "@/components/GoogleTagManagerNoScript";
+import { GTM_ID } from "@/config/gtm";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,8 +17,10 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Suzy Brito Advocacia - Especialistas em Busca e Apreensão",
-  description: "Advocacia especializada em defesa do consumidor e ações de busca e apreensão. Protegemos seus direitos e bens com estratégia e eficiência. Consulte gratuitamente.",
-  keywords: "advocacia, busca e apreensão, defesa do consumidor, direito civil, advogado Salvador, Suzy Brito",
+  description:
+    "Advocacia especializada em defesa do consumidor e ações de busca e apreensão. Protegemos seus direitos e bens com estratégia e eficiência. Consulte gratuitamente.",
+  keywords:
+    "advocacia, busca e apreensão, defesa do consumidor, direito civil, advogado Salvador, Suzy Brito",
   authors: [{ name: "Suzy Brito" }],
   creator: "Suzy Brito Advocacia",
   publisher: "Suzy Brito Advocacia",
@@ -30,7 +35,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Suzy Brito Advocacia - Especialistas em Busca e Apreensão",
-    description: "Advocacia especializada em defesa do consumidor e ações de busca e apreensão. Protegemos seus direitos e bens com estratégia e eficiência.",
+    description:
+      "Advocacia especializada em defesa do consumidor e ações de busca e apreensão. Protegemos seus direitos e bens com estratégia e eficiência.",
     url: "https://buscaeapreensao.suzibrito.adv.br",
     siteName: "Suzy Brito Advocacia",
     locale: "pt_BR",
@@ -39,7 +45,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Suzy Brito Advocacia - Especialistas em Busca e Apreensão",
-    description: "Advocacia especializada em defesa do consumidor e ações de busca e apreensão.",
+    description:
+      "Advocacia especializada em defesa do consumidor e ações de busca e apreensão.",
   },
   robots: {
     index: true,
@@ -64,9 +71,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="scroll-smooth">
+      <head>
+        <GoogleTagManager gtmId={GTM_ID} />
+      </head>
       <body
         className={`${inter.variable} ${playfair.variable} antialiased bg-white text-gray-900`}
       >
+        <GoogleTagManagerNoScript gtmId={GTM_ID} />
         {children}
       </body>
     </html>

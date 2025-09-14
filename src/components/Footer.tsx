@@ -1,6 +1,7 @@
 "use client";
 
-import { Linkedin, Instagram, MessageCircle } from "lucide-react";
+import { Instagram } from "lucide-react";
+import { WhatsAppIcon } from "./ui/whatsapp-icon";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -47,20 +48,20 @@ export function Footer() {
               {/* Redes Sociais */}
               <div className="flex space-x-4">
                 <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/80 hover:text-white transition-colors"
-                >
-                  <Linkedin className="h-6 w-6" />
-                </a>
-                <a
-                  href="https://instagram.com"
+                  href="https://instagram.com/suzybritoadv"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/80 hover:text-white transition-colors"
                 >
                   <Instagram className="h-6 w-6" />
+                </a>
+                <a
+                  href="https://wa.me/5577991112894/?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-white transition-colors"
+                >
+                  <WhatsAppIcon />
                 </a>
               </div>
             </div>
@@ -106,9 +107,7 @@ export function Footer() {
               © {currentYear} Suzy Brito Advocacia. Todos os direitos
               reservados.
             </p>
-            <p className="text-white/60 text-sm mt-2">
-              OAB/BA 66.418 | CNPJ: 12.345.678/0001-90
-            </p>
+            <p className="text-white/60 text-sm mt-2">OAB/BA 66.418</p>
           </div>
         </div>
       </footer>
@@ -116,10 +115,15 @@ export function Footer() {
       {/* Botão Flutuante do WhatsApp */}
       <div className="fixed bottom-6 right-6 z-50">
         <button
-          onClick={() => window.open("https://wa.me/5571999999999", "_blank")}
+          onClick={() =>
+            window.open(
+              "https://wa.me/5577991112894/?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F",
+              "_blank"
+            )
+          }
           className="bg-green-600 hover:bg-green-700 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
         >
-          <MessageCircle className="h-6 w-6" />
+          <WhatsAppIcon />
         </button>
       </div>
     </>

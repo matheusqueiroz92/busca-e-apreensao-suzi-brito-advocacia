@@ -1,14 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  FileText,
-  Wrench,
-  Shield,
-  Users,
-  Target,
-  ArrowRight,
-} from "lucide-react";
+import { FileText, Wrench, Shield, Users, ArrowRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
@@ -40,28 +32,28 @@ export function Solucoes() {
       icon: FileText,
       title: "Análise de Contrato",
       description: "Avaliação de contratos, notificações e cláusulas abusivas.",
-      color: "text-blue-600",
+      color: "text-secondary",
     },
     {
       icon: Wrench,
       title: "Revisão Contratual",
       description:
         "Suspensão da busca e apreensão via reclamação, exceção de contrato não cumprido.",
-      color: "text-green-600",
+      color: "text-secondary",
     },
     {
       icon: Shield,
       title: "Defesa Legal",
       description:
         "Petição inicial robusta, acompanhamento, audiências e recursos estratégicos.",
-      color: "text-purple-600",
+      color: "text-secondary",
     },
     {
       icon: Users,
       title: "Acompanhamento",
       description:
         "Transparência total com atualização constante e atendimento personalizado.",
-      color: "text-orange-600",
+      color: "text-secondary",
     },
   ];
 
@@ -70,11 +62,12 @@ export function Solucoes() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            A revisão de contratos bancários pode salvar seu patrimônio
+            Defesa contra Busca e Apreensão pode evitar a perda do seu veículo
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Oferecemos soluções completas e eficazes para proteger seus direitos
-            e bens
+            Oferecemos estratégias jurídicas eficazes para suspender a
+            apreensão, contestar cobranças abusivas e negociar diretamente com o
+            banco, garantindo mais chances de você manter o seu bem.
           </p>
         </div>
 
@@ -98,29 +91,37 @@ export function Solucoes() {
         </div>
 
         {/* Box de Resultado Esperado */}
-        <div className="bg-gray-800 text-white rounded-lg p-8 mb-12">
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Target className="h-8 w-8" />
-              <h3 className="text-2xl font-bold">
-                Pronto para recuperar o que é seu?
+        <div className="text-center">
+          <div className="bg-gradient-to-r from-primary to-secondary rounded-3xl p-8 lg:p-12 text-white relative overflow-hidden">
+            <div className="absolute inset-0 bg-black/10"></div>
+            <div className="relative z-10">
+              <h3 className="text-2xl lg:text-3xl font-serif font-bold mb-6">
+                Ser intimado em uma ação de busca e apreensão não significa que
+                tudo está perdido
               </h3>
+              <p className="text-md lg:text-lg mb-8 opacity-90 max-w-6xl mx-auto">
+                Com a defesa certa, você pode suspender a apreensão, negociar
+                melhores condições e até reduzir valores abusivos cobrados pelo
+                banco. O primeiro passo é simples: contar com uma equipe
+                especializada que vai agir rápido para proteger seu patrimônio e
+                garantir que seus direitos sejam respeitados. Não espere a pior
+                acontecer. <br /> Agora é o momento de virar o jogo!
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() =>
+                    window.open(
+                      "https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20revis%C3%A3o%20do%20meu%20contrato%20e%20juros%20abusivos.%20Poderiam%20me%20ajudar%3F",
+                      "_blank"
+                    )
+                  }
+                  className="bg-white text-primary px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:bg-secondary hover:-translate-y-1 flex items-center justify-center"
+                >
+                  Quero defender meu veículo agora
+                  <ArrowRight className="h-5 w-5 ml-2" />
+                </button>
+              </div>
             </div>
-            <p className="text-white/90 text-lg mb-6 max-w-2xl mx-auto">
-              Suspensão liminar ou definitiva da busca e apreensão. Manutenção
-              do seu bem. Regularização das parcelas ou alternativa de
-              negociação. Evitar negativação e cobranças abusivas.
-            </p>
-            <Button
-              onClick={() =>
-                window.open("https://wa.me/5571999999999", "_blank")
-              }
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-4 text-lg font-semibold"
-            >
-              Falar com Especialista
-              <ArrowRight className="h-5 w-5 ml-2" />
-            </Button>
           </div>
         </div>
       </div>

@@ -34,34 +34,34 @@ export function FAQ() {
 
   const faqs = [
     {
-      question: "Vou precisar entrar com processo?",
+      question: "Posso continuar usando meu veículo após a intimação?",
       answer:
-        "Não necessariamente. Primeiro fazemos uma análise da documentação para identificar irregularidades. Em muitos casos, conseguimos resolver extrajudicialmente através de negociações diretas com o credor.",
+        "Sim, até que a busca e apreensão seja cumprida, o veículo permanece com você. No entanto, ele pode ser retirado a qualquer momento, por isso é fundamental agir rápido para evitar a perda.",
     },
     {
-      question: "Posso sofrer abusos mesmo pagando em dia?",
+      question: "O que acontece se eu não apresentar defesa no prazo?",
       answer:
-        "Sim, infelizmente isso pode acontecer. Muitos contratos contêm cláusulas abusivas que permitem cobranças indevidas mesmo com pagamentos em dia. Nossa análise identifica essas irregularidades.",
+        "Se você não se manifestar, o processo seguirá em favor do banco, e a apreensão será praticamente inevitável. Além disso, você poderá ser cobrado pelo saldo devedor restante.",
     },
     {
-      question: "Quanto tempo leva para obter uma solução?",
+      question: "Existe chance de recuperar meu carro depois de apreendido?",
       answer:
-        "O tempo varia conforme a complexidade do caso. Uma liminar pode ser obtida em 24-48 horas em casos urgentes. Para soluções definitivas, o tempo varia de 3 a 12 meses.",
+        "Sim, é possível. Dependendo do caso, pode-se buscar a restituição do veículo ou negociar um acordo mesmo após a apreensão. Mas a defesa imediata aumenta muito as chances de sucesso.",
     },
     {
-      question: "É possível negociar o parcelamento do débito?",
+      question: "Quais direitos eu tenho diante da ação de busca e apreensão?",
       answer:
-        "Sim, é possível e muitas vezes recomendado. Podemos negociar diretamente com o credor para estabelecer condições mais favoráveis, como parcelamento com juros menores.",
+        "Você tem direito de apresentar defesa, contestar cláusulas abusivas, solicitar revisão contratual e tentar suspender a liminar. O banco não pode agir de forma arbitrária sem respeitar o devido processo legal.",
     },
     {
-      question: "A busca e apreensão pode ocorrer sem notificação?",
+      question: "Preciso pagar toda a dívida de uma vez para resolver?",
       answer:
-        "Em alguns casos sim, especialmente quando há ordem judicial. Porém, na maioria das situações, o devedor deve ser notificado previamente.",
+        "Não necessariamente. Muitas vezes é possível negociar um parcelamento, quitar apenas parte da dívida ou pedir revisão dos valores cobrados. Tudo depende da análise do contrato.",
     },
     {
-      question: "Quais documentos devo enviar para análise?",
+      question: "A busca e apreensão pode afetar meu nome no mercado?",
       answer:
-        "Contrato original, notificações recebidas, comprovantes de pagamento, documentos pessoais (RG, CPF), e qualquer correspondência relacionada ao caso.",
+        "Sim. Além da apreensão, o banco pode negativar seu CPF, restringindo seu crédito. Uma defesa bem feita pode evitar tanto a perda do veículo quanto danos à sua vida financeira.",
     },
   ];
 
@@ -71,7 +71,7 @@ export function FAQ() {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Esclarecendo suas dúvidas sobre{" "}
-            <span className="text-secondary">busca e apreensão</span>
+            <span className="text-secondary">Busca e Apreensão</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Encontre respostas para as perguntas mais comuns sobre busca e

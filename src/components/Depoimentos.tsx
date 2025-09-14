@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { gsap } from "gsap";
-import Image from "next/image";
 
 interface Depoimento {
   id: number;
@@ -31,7 +30,7 @@ const depoimentos: Depoimento[] = [
     foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
     depoimento:
       "Excelente profissional! Conseguiu resolver meu caso de busca e apreensão de forma rápida e eficiente. A Dra. Suzy é muito atenciosa e sempre disponível para esclarecer dúvidas.",
-    rating: 5,
+    rating: 4,
     caso: "Busca e Apreensão",
   },
   {
@@ -58,7 +57,7 @@ const depoimentos: Depoimento[] = [
     foto: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
     depoimento:
       "A Dra. Suzy transformou uma situação que parecia sem solução em uma vitória completa. Sua estratégia jurídica e dedicação são incomparáveis. Sou muito grata pelo excelente trabalho!",
-    rating: 5,
+    rating: 4,
     caso: "Recuperação de Bens",
   },
 ];
@@ -124,10 +123,10 @@ export function Depoimentos() {
     setIsAutoPlaying(false);
   };
 
-  const goToDepoimento = (pageIndex: number) => {
-    setCurrentIndex(pageIndex);
-    setIsAutoPlaying(false);
-  };
+  // const goToDepoimento = (pageIndex: number) => {
+  //   setCurrentIndex(pageIndex);
+  //   setIsAutoPlaying(false);
+  // };
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
@@ -160,93 +159,67 @@ export function Depoimentos() {
 
         {/* Carrossel de Depoimentos */}
         <div className="relative max-w-7xl mx-auto">
-          <div className="overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * 33.333}%)` }}
-            >
-              {depoimentos.map((depoimento, index) => (
-                <div key={depoimento.id} className="w-1/3 flex-shrink-0 px-4">
-                  <div className="depoimento-card bg-white rounded-2xl shadow-lg p-6 md:p-8 relative overflow-hidden h-full">
-                    {/* Elemento decorativo */}
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-full -translate-y-10 translate-x-10"></div>
-
-                    {/* Ícone de aspas */}
-                    <div className="absolute top-4 left-4 w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                      <Quote className="h-5 w-5 text-primary" />
-                    </div>
-
-                    <div className="relative z-10">
-                      {/* Avaliação com estrelas */}
-                      <div className="flex items-center gap-1 mb-4">
-                        {renderStars(depoimento.rating)}
-                        <span className="ml-2 text-xs text-muted-foreground">
-                          ({depoimento.rating}/5)
-                        </span>
-                      </div>
-
-                      {/* Depoimento */}
-                      <blockquote className="text-sm md:text-base text-foreground leading-relaxed mb-6 italic">
-                        &quot;{depoimento.depoimento}&quot;
-                      </blockquote>
-
-                      {/* Informações do cliente */}
-                      <div className="flex items-center gap-3">
-                        <div className="relative">
-                          <Image
-                            src={depoimento.foto}
-                            alt={depoimento.nome}
-                            fill
-                            className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md"
-                          />
-                          <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-secondary rounded-full flex items-center justify-center">
-                            <div className="w-2 h-2 bg-white rounded-full"></div>
-                          </div>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-foreground text-sm">
-                            {depoimento.nome}
-                          </h4>
-                          <p className="text-xs text-primary font-medium">
-                            {depoimento.caso}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Controles de navegação */}
-          <div className="flex items-center justify-between mt-8">
+          <div className="flex items-center gap-4">
             {/* Botão anterior */}
             <Button
               onClick={prevDepoimento}
               variant="outline"
               size="lg"
-              className="bg-white hover:bg-muted border-border shadow-md hover:shadow-lg transition-all duration-300"
+              className="bg-white hover:bg-muted border-border shadow-md hover:shadow-lg transition-all duration-300 flex-shrink-0"
             >
               <ChevronLeft className="h-5 w-5" />
             </Button>
 
-            {/* Indicadores */}
-            <div className="flex items-center gap-2">
-              {Array.from(
-                { length: Math.ceil(depoimentos.length / 3) },
-                (_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToDepoimento(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      Math.floor(currentIndex / 3) === index
-                        ? "bg-primary scale-125"
-                        : "bg-border hover:bg-primary/50"
-                    }`}
-                  />
-                )
-              )}
+            {/* Container dos depoimentos */}
+            <div className="flex-1 overflow-hidden">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentIndex * 33.333}%)` }}
+              >
+                {depoimentos.map((depoimento) => (
+                  <div
+                    key={depoimento.id}
+                    className="w-1/3 flex-shrink-0 px-4 py-4"
+                  >
+                    <div className="depoimento-card bg-white rounded-2xl shadow-lg p-6 md:p-8 relative border-amber-100 border-2 overflow-hidden h-full">
+                      {/* Elemento decorativo */}
+                      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-full -translate-y-10 translate-x-10"></div>
+
+                      {/* Ícone de aspas */}
+                      <div className="absolute top-4 left-4 w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <Quote className="h-5 w-5 text-white" />
+                      </div>
+
+                      <div className="relative z-10">
+                        {/* Avaliação com estrelas */}
+                        <div className="flex items-center gap-1 mb-4 ml-8">
+                          {renderStars(depoimento.rating)}
+                          <span className="ml-2 text-xs text-muted-foreground">
+                            ({depoimento.rating}/5)
+                          </span>
+                        </div>
+
+                        {/* Depoimento */}
+                        <blockquote className="text-sm md:text-base text-foreground leading-relaxed mb-6 italic">
+                          &quot;{depoimento.depoimento}&quot;
+                        </blockquote>
+
+                        {/* Informações do cliente */}
+                        <div className="flex items-center gap-3">
+                          <div>
+                            <h4 className="font-semibold text-foreground text-sm">
+                              {depoimento.nome}
+                            </h4>
+                            <p className="text-xs text-primary font-medium">
+                              {depoimento.caso}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Botão próximo */}
@@ -254,18 +227,10 @@ export function Depoimentos() {
               onClick={nextDepoimento}
               variant="outline"
               size="lg"
-              className="bg-white hover:bg-muted border-border shadow-md hover:shadow-lg transition-all duration-300"
+              className="bg-white hover:bg-muted border-border shadow-md hover:shadow-lg transition-all duration-300 flex-shrink-0"
             >
               <ChevronRight className="h-5 w-5" />
             </Button>
-          </div>
-
-          {/* Informação de navegação */}
-          <div className="text-center mt-6">
-            <p className="text-sm text-muted-foreground">
-              Página {Math.floor(currentIndex / 3) + 1} de{" "}
-              {Math.ceil(depoimentos.length / 3)}
-            </p>
           </div>
         </div>
 
@@ -281,9 +246,29 @@ export function Depoimentos() {
                 ?.scrollIntoView({ behavior: "smooth" })
             }
             size="lg"
-            className="bg-primary hover:bg-primary/90 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            className="relative overflow-hidden bg-gradient-to-r from-primary via-primary to-secondary text-white px-12 py-6 text-lg font-bold rounded-lg border-0 shadow-md transition-all duration-300 group"
           >
-            Agende sua Consulta
+            {/* Efeito de brilho animado */}
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shine pointer-events-none" />
+            {/* Fundo animado sutil */}
+            <span className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {/* Conteúdo do botão */}
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              <svg
+                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+              Falar com Especialista
+            </span>
           </Button>
         </div>
       </div>
