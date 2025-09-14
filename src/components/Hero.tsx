@@ -1,21 +1,18 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  MessageCircle,
-  ArrowRight,
-  Scale,
-  CheckCircle,
-  Gavel,
-} from "lucide-react";
+import { ArrowRight, Gavel } from "lucide-react";
 import { gsap } from "gsap";
+import { WhatsAppIcon } from "./ui/whatsapp-icon";
+import Image from "next/image";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const leftContentRef = useRef<HTMLDivElement>(null);
   const rightContentRef = useRef<HTMLDivElement>(null);
+
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     if (heroRef.current) {
@@ -72,37 +69,17 @@ const Hero = () => {
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
           {/* Conteúdo da esquerda - 60% */}
           <div ref={leftContentRef} className="lg:col-span-3 space-y-8">
-            {/* Badges */}
-            <div className="flex flex-nowrap gap-2 lg:gap-3">
-              <Badge
-                variant="outline"
-                className="border-secondary text-primary px-2 py-1 lg:px-4 lg:py-2 text-xs lg:text-sm rounded-lg whitespace-nowrap"
-              >
-                <Scale className="w-4 h-4 lg:w-6 lg:h-6 mr-1 lg:mr-2" />
-                Advocacia Especializada
-              </Badge>
-              <Badge
-                variant="outline"
-                className="border-secondary text-primary px-2 py-1 lg:px-4 lg:py-2 text-xs lg:text-sm rounded-lg whitespace-nowrap"
-              >
-                <CheckCircle className="w-3 h-3 lg:w-4 lg:h-4 mr-1 lg:mr-2" />
-                Revisão de Contratos
-              </Badge>
-            </div>
-
             {/* Title */}
-            <h1 className="text-4xl lg:text-5xl font-serif font-extrabold text-primary leading-tight">
-              Está recebendo uma notificação de{" "}
-              <span className="text-secondary">busca e apreensão</span> ou teme
-              que isso possa acontecer?
+            <h1 className="text-4xl lg:text-6xl font-serif font-extrabold text-primary leading-tight">
+              Você foi intimado pelo
+              <br /> oficial de justiça?
             </h1>
 
             {/* Description */}
             <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-              A busca e apreensão é uma medida judicial que pode ser aplicada
-              por instituições financeiras para recuperar bens, como veículos ou
-              imóveis, em caso de inadimplência. Se você recebeu um aviso ou
-              quer se antecipar a esse risco, saiba como podemos te ajudar.
+              Atenção! Seu bem pode ser apreendido a qualquer momento, mas
+              calma, nós temos a solução, fazemos a defesa urgente em ações de
+              busca e apreensão.
             </p>
 
             {/* CTA Buttons */}
@@ -125,7 +102,7 @@ const Hero = () => {
 
                 {/* Content */}
                 <div className="relative flex items-center space-x-3">
-                  <MessageCircle className="w-6 h-6 animate-pulse" />
+                  <WhatsAppIcon />
                   <span className="font-extrabold">Falar com Especialista</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
                 </div>
@@ -147,30 +124,59 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Content - Image - 40% */}
-          <div ref={rightContentRef} className="lg:col-span-2 relative">
-            <div className="relative bg-gradient-to-br from-primary/10 to-secondary/20 rounded-3xl p-8 lg:p-12 shadow-2xl overflow-hidden">
-              {/* Main Image */}
-              <div className="relative h-[500px] lg:h-[560px]">
-                {/* Placeholder para imagem da advogada */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/10 rounded-xl overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-primary/10 to-secondary/20 rounded-xl flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-32 h-32 bg-gradient-to-br from-primary to-secondary rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <Scale className="h-16 w-16 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-foreground mb-2">
-                        Dra. Suzy Brito
-                      </h3>
-                      <p className="text-muted-foreground">
-                        Advogada Especialista em Busca e Apreensão
-                      </p>
-                    </div>
-                  </div>
+          {/* Right Content - Vídeo */}
+          <div
+            ref={rightContentRef}
+            className="lg:col-span-2 relative flex items-center justify-center"
+          >
+            <div className="relative w-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/20 p-6 shadow-2xl rounded-2xl overflow-hidden min-h-[500px]">
+              {!showVideo ? (
+                <button
+                  className="relative w-full h-full flex items-center justify-center focus:outline-none rounded-xl overflow-hidden"
+                  style={{ width: "100%", aspectRatio: "4/5" }}
+                  onClick={() => setShowVideo(true)}
+                  aria-label="Clique para assistir ao vídeo"
+                >
+                  <Image
+                    src="/capa-video.png"
+                    alt="Preview do vídeo"
+                    fill
+                    className="object-cover rounded-xl"
+                    style={{ aspectRatio: "4/5" }}
+                  />
+                  {/* Ícone de play centralizado */}
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <svg
+                      width="80"
+                      height="80"
+                      viewBox="0 0 80 80"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="drop-shadow-lg"
+                    >
+                      <circle cx="40" cy="40" r="40" fill="rgba(0,0,0,0.6)" />
+                      <polygon points="30,25 60,40 30,55" fill="#fff" />
+                    </svg>
+                  </span>
                   {/* Overlay sutil para melhorar legibilidade */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent rounded-xl"></div>
-                </div>
-              </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none rounded-xl"></div>
+                </button>
+              ) : (
+                <video
+                  controls
+                  autoPlay
+                  poster="foto-suzy-hero.webp"
+                  width="100%"
+                  height="auto"
+                  className="w-full h-full object-cover rounded-xl"
+                  style={{ aspectRatio: "4/5" }}
+                >
+                  <source
+                    src="https://pub-d08549843b554d41b1dc2a9609740f32.r2.dev/Design%20sem%20nome%20(1).mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              )}
             </div>
           </div>
         </div>

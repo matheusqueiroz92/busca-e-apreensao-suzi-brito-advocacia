@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import {
   Menu,
   X,
-  Linkedin,
   Instagram,
   Home,
   AlertTriangle,
@@ -32,18 +31,13 @@ export function Header() {
 
   const socialLinks = [
     {
-      name: "LinkedIn",
-      href: "https://linkedin.com/in/suzy-brito-advocacia",
-      icon: Linkedin,
-    },
-    {
       name: "Instagram",
       href: "https://instagram.com/suzybritoadv",
       icon: Instagram,
     },
     {
       name: "WhatsApp",
-      href: "https://wa.me/5577991112884?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20revis%C3%A3o%20do%20meu%20contrato%20e%20juros%20abusivos.%20Poderiam%20me%20ajudar%3F",
+      href: "https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20revis%C3%A3o%20do%20meu%20contrato%20e%20juros%20abusivos.%20Poderiam%20me%20ajudar%3F",
       icon: WhatsAppIcon,
     },
   ];
@@ -79,7 +73,7 @@ export function Header() {
                 onClick={() => scrollToSection(item.href)}
                 className="group relative text-sm font-medium text-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-primary/5"
               >
-                <item.icon className="w-4 h-4 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3" />
+                <item.icon className="w-4 h-4 transition-all duration-300 group-hover:scale-110" />
                 <span className="relative">
                   {item.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300 group-hover:w-full"></span>
@@ -100,7 +94,7 @@ export function Header() {
                 className="group relative p-3 text-muted-foreground hover:text-primary rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:shadow-lg hover:-translate-y-1"
                 aria-label={social.name}
               >
-                <social.icon className="w-5 h-5 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6" />
+                <social.icon className="w-5 h-5 transition-all duration-300 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
               </a>
             ))}
@@ -137,14 +131,6 @@ export function Header() {
                 </a>
               ))}
               <div className="flex items-center space-x-4 px-3 py-2">
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground hover:text-primary transition-colors"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </a>
                 <a
                   href="https://instagram.com"
                   target="_blank"

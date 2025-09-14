@@ -49,9 +49,8 @@
   /* Cores personalizadas do escritório Suzy Brito Advocacia */
   --primary: #530b21; /* Marrom escuro */
   --primary-foreground: #fefefe; /* Branco */
-  --secondary: #e9cd65; /* Dourado */
+  --secondary: #dfb624; /* Dourado */
   --secondary-foreground: #530b21; /* Marrom escuro */
-
   --background: #fefefe; /* Branco */
   --foreground: #530b21; /* Marrom escuro */
   --card: #fefefe; /* Branco */
@@ -60,7 +59,7 @@
   --popover-foreground: #530b21; /* Marrom escuro */
   --muted: #f8f9fa; /* Cinza muito claro */
   --muted-foreground: #6b7280; /* Cinza médio */
-  --accent: #e9cd65; /* Dourado */
+  --accent: #dfb624; /* Dourado */
   --accent-foreground: #530b21; /* Marrom escuro */
   --destructive: #dc2626; /* Vermelho */
   --destructive-foreground: #fefefe; /* Branco */

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Award, Clock, CheckCircle, Globe, User, Quote } from "lucide-react";
+import { Award, Clock, User, Quote } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
@@ -133,10 +133,10 @@ export function Sobre() {
                 </div>
                 <div>
                   <blockquote className="text-foreground italic mb-2">
-                    "Acredito que todos merecem justiça, principalmente quando
-                    se trata de assegurar a manutenção de um bem. Meu
+                    &quot;Acredito que todos merecem justiça, principalmente
+                    quando se trata de assegurar a manutenção de um bem. Meu
                     compromisso é usar meu conhecimento e experiência para
-                    garantir que meus clientes sejam tratados com justiça."
+                    garantir que meus clientes sejam tratados com justiça.&quot;
                   </blockquote>
                   <cite className="text-sm font-semibold text-primary">
                     Dra. Suzy Brito
