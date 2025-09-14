@@ -71,7 +71,7 @@ const Hero = () => {
           <div ref={leftContentRef} className="lg:col-span-3 space-y-8">
             {/* Title */}
             <h1 className="text-4xl lg:text-6xl font-serif font-extrabold text-primary leading-tight">
-              Você foi intimado pelooooo
+              Você foi intimado peloo
               <br /> oficial de justiça?
             </h1>
 
