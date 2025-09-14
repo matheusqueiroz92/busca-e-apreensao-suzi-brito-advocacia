@@ -20,7 +20,7 @@ export const GTM_EVENTS = {
 // Função para disparar eventos personalizados no GTM
 export const trackGTMEvent = (
   eventName: string,
-  parameters?: Record<string, any>
+  parameters?: Record<string, unknown>
 ) => {
   if (typeof window !== "undefined" && window.dataLayer) {
     window.dataLayer.push({
@@ -46,7 +46,7 @@ export const trackConversion = (
 // Função para rastrear formulários
 export const trackFormSubmit = (
   formName: string,
-  formData?: Record<string, any>
+  formData?: Record<string, unknown>
 ) => {
   trackGTMEvent(GTM_EVENTS.FORM_SUBMIT, {
     form_name: formName,
