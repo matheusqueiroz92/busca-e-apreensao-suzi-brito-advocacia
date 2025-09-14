@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { gsap } from "gsap";
+import Image from "next/image";
 
 interface Depoimento {
   id: number;
@@ -192,7 +193,7 @@ export function Depoimentos() {
                       {/* Informações do cliente */}
                       <div className="flex items-center gap-3">
                         <div className="relative">
-                          <img
+                          <Image
                             src={depoimento.foto}
                             alt={depoimento.nome}
                             className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md"
