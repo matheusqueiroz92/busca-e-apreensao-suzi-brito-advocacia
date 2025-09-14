@@ -14,6 +14,15 @@ const Hero = () => {
 
   const [showVideo, setShowVideo] = useState(false);
 
+  // URLs de teste para o vídeo
+  const videoUrls = [
+    "https://pub-d08549843b554d41b1dc2a9609740f32.r2.dev/Design%20sem%20nome%20%281%29.mp4",
+    "https://pub-d08549843b554d41b1dc2a9609740f32.r2.dev/Design%20sem%20nome%20(1).mp4",
+    "https://pub-d08549843b554d41b1dc2a9609740f32.r2.dev/Design sem nome (1).mp4",
+  ];
+
+  const videoUrl = videoUrls[0]; // Teste com a primeira URL
+
   useEffect(() => {
     if (heroRef.current) {
       const tl = gsap.timeline();
@@ -171,10 +180,7 @@ const Hero = () => {
                   className="w-full h-full object-cover rounded-xl"
                   style={{ aspectRatio: "4/5" }}
                 >
-                  <source
-                    src="https://pub-d08549843b554d41b1dc2a9609740f32.r2.dev/Design%20sem%20nome%20(1).mp4"
-                    type="video/mp4"
-                  />
+                  <source src={videoUrl} type="video/mp4" />
                 </video>
               )}
             </div>
