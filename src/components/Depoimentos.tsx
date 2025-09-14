@@ -19,7 +19,7 @@ const depoimentos: Depoimento[] = [
   {
     id: 1,
     nome: "Maria Silva",
-    foto: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+    foto: "/placeholder-avatar.svg", // Imagem local temporária
     depoimento:
       "A Dra. Suzy Brito foi fundamental para recuperar meu veículo que estava sendo apreendido injustamente. Sua dedicação e conhecimento técnico fizeram toda a diferença. Recomendo de olhos fechados!",
     rating: 5,
@@ -28,7 +28,7 @@ const depoimentos: Depoimento[] = [
   {
     id: 2,
     nome: "João Santos",
-    foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+    foto: "/placeholder-avatar.svg", // Imagem local temporária
     depoimento:
       "Excelente profissional! Conseguiu resolver meu caso de busca e apreensão de forma rápida e eficiente. A Dra. Suzy é muito atenciosa e sempre disponível para esclarecer dúvidas.",
     rating: 5,
@@ -37,7 +37,7 @@ const depoimentos: Depoimento[] = [
   {
     id: 3,
     nome: "Ana Costa",
-    foto: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+    foto: "/placeholder-avatar.svg", // Imagem local temporária
     depoimento:
       "Profissional excepcional! Meu caso era complexo e a Dra. Suzy conseguiu uma solução que eu nem imaginava ser possível. Sua experiência em direito do consumidor é impressionante.",
     rating: 5,
@@ -46,7 +46,7 @@ const depoimentos: Depoimento[] = [
   {
     id: 4,
     nome: "Carlos Oliveira",
-    foto: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+    foto: "/placeholder-avatar.svg", // Imagem local temporária
     depoimento:
       "Recomendo a Dra. Suzy Brito para qualquer pessoa que precise de ajuda jurídica. Ela é muito competente, honesta e sempre prioriza o melhor interesse do cliente. Resultado garantido!",
     rating: 5,
@@ -55,7 +55,7 @@ const depoimentos: Depoimento[] = [
   {
     id: 5,
     nome: "Fernanda Lima",
-    foto: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+    foto: "/placeholder-avatar.svg", // Imagem local temporária
     depoimento:
       "A Dra. Suzy transformou uma situação que parecia sem solução em uma vitória completa. Sua estratégia jurídica e dedicação são incomparáveis. Sou muito grata pelo excelente trabalho!",
     rating: 5,
