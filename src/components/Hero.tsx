@@ -21,7 +21,8 @@ const Hero = () => {
     "https://pub-d08549843b554d41b1dc2a9609740f32.r2.dev/Design sem nome (1).mp4",
   ];
 
-  const videoUrl = null; // Temporariamente desabilitado para teste
+  const videoUrl =
+    "https://pub-d08549843b554d41b1dc2a9609740f32.r2.dev/Design%20sem%20nome%20%281%29.mp4";
 
   useEffect(() => {
     if (heroRef.current) {
@@ -80,7 +81,7 @@ const Hero = () => {
           <div ref={leftContentRef} className="lg:col-span-3 space-y-8">
             {/* Title */}
             <h1 className="text-4xl lg:text-6xl font-serif font-extrabold text-primary leading-tight">
-              Você foi intimado peloo
+              Você foi intimado pelo
               <br /> oficial de justiça?
             </h1>
 
