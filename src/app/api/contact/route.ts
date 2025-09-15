@@ -76,19 +76,27 @@ export async function POST(request: NextRequest) {
 
     // Enviar e-mail usando Resend (recomendado para Next.js)
     if (process.env.RESEND_API_KEY) {
+      console.log("Tentando enviar e-mail via Resend...");
       const resend = await import("resend");
       const resendClient = new resend.Resend(process.env.RESEND_API_KEY);
 
       const result = await resendClient.emails.send({
-        from: "noreply@suzibrito.adv.br",
+        from: "contato@suzibrito.adv.br",
         to: emailData.to,
         subject: emailData.subject,
         html: emailData.html,
         text: emailData.text,
       });
 
+      console.log("Resultado do Resend:", result);
+
       if (result.error) {
-        throw new Error(`Erro ao enviar e-mail: ${result.error.message}`);
+        console.error("Erro do Resend:", result.error);
+        throw new Error(
+          `Erro ao enviar e-mail: ${
+            result.error.message || JSON.stringify(result.error)
+          }`
+        );
       }
 
       return NextResponse.json(
@@ -135,11 +143,21 @@ export async function POST(request: NextRequest) {
 
     // Se nenhum serviço de e-mail estiver configurado, apenas logar
     console.log("Dados do formulário recebidos:", validatedData);
+    console.log("Variáveis de ambiente disponíveis:");
+    console.log(
+      "- RESEND_API_KEY:",
+      process.env.RESEND_API_KEY ? "Configurado" : "Não configurado"
+    );
+    console.log(
+      "- SMTP_HOST:",
+      process.env.SMTP_HOST ? "Configurado" : "Não configurado"
+    );
 
     return NextResponse.json(
       {
         success: true,
-        message: "Mensagem recebida! (E-mail não configurado)",
+        message:
+          "Mensagem recebida! (E-mail não configurado - verifique as variáveis de ambiente)",
         data: validatedData,
       },
       { status: 200 }
