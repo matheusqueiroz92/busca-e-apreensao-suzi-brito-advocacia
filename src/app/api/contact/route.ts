@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: true,
-          message: "Mensagem enviada com sucesso!",
+          message: "Mensagem enviada com sucesso!!",
           emailId: result.data?.id,
         },
         { status: 200 }
