@@ -4,12 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { MapPin, Phone, Mail, MessageCircle, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Send } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { trackGTMEvent, trackFormSubmit, GTM_EVENTS } from "@/config/gtm";
+import { trackGAEvent, trackFormSubmit, GA_EVENTS } from "@/config/analytics";
+import { WhatsAppIcon } from "./ui/whatsapp-icon";
 
 const contactSchema = z.object({
   nome: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
@@ -35,41 +36,61 @@ export function Contato() {
   const onSubmit = async (data: ContactForm) => {
     setIsSubmitting(true);
 
-    // Rastrear evento de contato no Google Tag Manager
-    trackFormSubmit("Formulário de Contato", {
-      form_type: "contact",
-      lead_type: "consultation",
-    });
+    try {
+      // Rastrear evento de contato no Google Analytics
+      trackFormSubmit("Formulário de Contato", {
+        form_type: "contact",
+        lead_type: "consultation",
+      });
 
-    trackGTMEvent(GTM_EVENTS.CONTACT, {
-      event_category: "engagement",
-      event_label: "contact_form",
-      value: 1,
-    });
+      trackGAEvent(GA_EVENTS.CONTACT, {
+        event_category: "engagement",
+        event_label: "contact_form",
+        value: 1,
+      });
 
-    // Simular envio do formulário
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("Dados do formulário:", data);
-    reset();
-    setIsSubmitting(false);
-    alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+      // Enviar dados para a API
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        reset();
+        alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+      } else {
+        throw new Error(result.message || "Erro ao enviar mensagem");
+      }
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      alert(
+        "Erro ao enviar mensagem. Tente novamente ou entre em contato por telefone."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
     {
       icon: Mail,
       title: "Email",
-      content: "contato@suzibrito.adv.br",
+      content: "suzibrito.adv@gmail.com",
     },
     {
       icon: Phone,
       title: "Telefone",
-      content: "(71) 99999-9999",
+      content: "(77) 99111-2894",
     },
     {
       icon: MapPin,
       title: "Endereço",
-      content: "Rua das Flores, 123 - Centro, Salvador/BA",
+      content: "Rua 7 de setembro, número 29 - Centro, Itapetinga-BA",
     },
   ];
 
@@ -116,11 +137,14 @@ export function Contato() {
               <div className="mt-8 pt-6 border-t border-white/20">
                 <Button
                   onClick={() =>
-                    window.open("https://wa.me/5571999999999", "_blank")
+                    window.open(
+                      "https://wa.me/5577991112894/?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F",
+                      "_blank"
+                    )
                   }
-                  className="w-full bg-green-600 hover:bg-green-700 text-white py-4 text-lg font-semibold"
+                  className="w-full bg-green-600 hover:bg-green-700 text-white py-6 text-lg font-semibold"
                 >
-                  <MessageCircle className="h-5 w-5 mr-2" />
+                  <WhatsAppIcon />
                   WhatsApp
                 </Button>
               </div>
