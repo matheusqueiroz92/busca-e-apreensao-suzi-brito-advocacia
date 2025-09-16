@@ -9,7 +9,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { trackGAEvent, trackFormSubmit, GA_EVENTS } from "@/config/analytics";
+import { trackGTMEvent, trackFormSubmit, GTM_EVENTS } from "@/config/gtm";
 import { WhatsAppIcon } from "./ui/whatsapp-icon";
 
 const contactSchema = z.object({
@@ -37,13 +37,13 @@ export function Contato() {
     setIsSubmitting(true);
 
     try {
-      // Rastrear evento de contato no Google Analytics
+      // Rastrear evento de contato no Google Tag Manager
       trackFormSubmit("Formulário de Contato", {
         form_type: "contact",
         lead_type: "consultation",
       });
 
-      trackGAEvent(GA_EVENTS.CONTACT, {
+      trackGTMEvent(GTM_EVENTS.CONTACT, {
         event_category: "engagement",
         event_label: "contact_form",
         value: 1,
@@ -222,7 +222,7 @@ export function Contato() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-primary hover:bg-primary/90 text-white py-4 text-lg font-semibold"
+                className="w-full bg-primary hover:bg-primary/90 text-white py-6 text-lg font-semibold"
               >
                 <Send className="h-5 w-5 mr-2" />
                 {isSubmitting ? "Enviando..." : "Enviar mensagem"}

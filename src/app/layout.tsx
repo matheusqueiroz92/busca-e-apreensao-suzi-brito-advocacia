@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
-import { GA_MEASUREMENT_ID } from "@/config/analytics";
+import GoogleTagManager from "@/components/GoogleTagManager";
+import GoogleTagManagerNoScript from "@/components/GoogleTagManagerNoScript";
+import { GTM_ID } from "@/config/gtm";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -71,11 +72,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="scroll-smooth">
       <head>
-        <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
+        <GoogleTagManager gtmId={GTM_ID} />
       </head>
       <body
         className={`${inter.variable} ${playfair.variable} antialiased bg-white text-gray-900`}
       >
+        <GoogleTagManagerNoScript gtmId={GTM_ID} />
         {children}
       </body>
     </html>

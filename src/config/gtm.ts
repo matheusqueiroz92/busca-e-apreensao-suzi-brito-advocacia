@@ -1,9 +1,8 @@
-// Configuração do Google Analytics/Ads
-export const GA_MEASUREMENT_ID =
-  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "AW-17557882845";
+// Configuração do Google Tag Manager
+export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-5BZQ434J";
 
 // Eventos personalizados que você pode usar
-export const GA_EVENTS = {
+export const GTM_EVENTS = {
   PAGE_VIEW: "page_view",
   VIEW_CONTENT: "view_content",
   LEAD: "generate_lead",
@@ -18,13 +17,18 @@ export const GA_EVENTS = {
   SCROLL: "scroll",
 } as const;
 
-// Função para disparar eventos personalizados no Google Analytics
-export const trackGAEvent = (
+// Função para disparar eventos personalizados no GTM
+export const trackGTMEvent = (
   eventName: string,
   parameters?: Record<string, unknown>
 ) => {
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", eventName, parameters);
+  if (typeof window !== "undefined" && window.dataLayer) {
+    const eventData = {
+      event: eventName,
+      ...parameters,
+    };
+
+    window.dataLayer.push(eventData);
   }
 };
 
@@ -34,7 +38,7 @@ export const trackConversion = (
   value?: number,
   currency = "BRL"
 ) => {
-  trackGAEvent("conversion", {
+  trackGTMEvent("conversion", {
     conversion_type: conversionType,
     value: value,
     currency: currency,
@@ -46,7 +50,7 @@ export const trackFormSubmit = (
   formName: string,
   formData?: Record<string, unknown>
 ) => {
-  trackGAEvent(GA_EVENTS.FORM_SUBMIT, {
+  trackGTMEvent(GTM_EVENTS.FORM_SUBMIT, {
     form_name: formName,
     ...formData,
   });
@@ -54,7 +58,7 @@ export const trackFormSubmit = (
 
 // Função para rastrear cliques em botões
 export const trackButtonClick = (buttonName: string, location?: string) => {
-  trackGAEvent(GA_EVENTS.CLICK, {
+  trackGTMEvent(GTM_EVENTS.CLICK, {
     event_category: "engagement",
     event_label: buttonName,
     location: location,
