@@ -139,15 +139,17 @@ export default function TestGTMPage() {
               </code>
             </li>
             <li>Deve retornar um array com dados do GTM</li>
-            <li>Instale a extensão "Tag Assistant Legacy" no Chrome</li>
+            <li>
+              Instale a extensão &quot;Tag Assistant Legacy&quot; no Chrome
+            </li>
             <li>Recarregue a página e verifique se o GTM aparece como ativo</li>
             <li>
               Clique nos botões de teste e verifique se os eventos aparecem no
               console
             </li>
             <li>
-              <strong>No GTM:</strong> Vá em "Preview" para ver os eventos em
-              tempo real
+              <strong>No GTM:</strong> Vá em &quot;Preview&quot; para ver os
+              eventos em tempo real
             </li>
           </ol>
         </div>
