@@ -6,6 +6,7 @@ import { ArrowRight, Gavel } from "lucide-react";
 import { gsap } from "gsap";
 import { WhatsAppIcon } from "./ui/whatsapp-icon";
 import Image from "next/image";
+import { trackGTMEvent, trackButtonClick, GTM_EVENTS } from "@/config/gtm";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -92,12 +93,24 @@ const Hero = () => {
               <Button
                 size="lg"
                 className="group relative bg-gradient-to-r from-primary via-primary to-secondary hover:from-secondary hover:to-primary text-primary-foreground px-10 py-6 text-xl font-bold animate-button-glow transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden border-0"
-                onClick={() =>
+                onClick={() => {
+                  // Rastrear clique no CTA principal
+                  trackButtonClick(
+                    "Falar com Especialista - Hero",
+                    "hero_section"
+                  );
+                  trackGTMEvent(GTM_EVENTS.CLICK, {
+                    event_category: "cta",
+                    event_label: "whatsapp_hero",
+                    button_text: "Falar com Especialista",
+                    location: "hero_section",
+                  });
+
                   window.open(
                     "https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F",
                     "_blank"
-                  )
-                }
+                  );
+                }}
               >
                 {/* Background animation */}
                 <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -117,6 +130,18 @@ const Hero = () => {
                 size="lg"
                 className="group border-2 border-secondary/50 text-secondary hover:bg-secondary hover:text-secondary-foreground px-8 py-6 text-lg font-semibold transition-all duration-300 hover:shadow-lg hover:border-secondary transform hover:-translate-y-1"
                 onClick={() => {
+                  // Rastrear clique no botão secundário
+                  trackButtonClick(
+                    "Ver Problemas Comuns - Hero",
+                    "hero_section"
+                  );
+                  trackGTMEvent(GTM_EVENTS.CLICK, {
+                    event_category: "navigation",
+                    event_label: "scroll_to_problems",
+                    button_text: "Ver Problemas Comuns",
+                    location: "hero_section",
+                  });
+
                   const element = document.querySelector("#problemas");
                   element?.scrollIntoView({ behavior: "smooth" });
                 }}
