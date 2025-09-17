@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
 import { ArrowRight, Gavel } from "lucide-react";
 import { gsap } from "gsap";
 import { WhatsAppIcon } from "./ui/whatsapp-icon";
@@ -90,9 +89,11 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="group relative bg-gradient-to-r from-primary via-primary to-secondary hover:from-secondary hover:to-primary text-primary-foreground px-10 py-6 text-xl font-bold animate-button-glow transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden border-0"
+              <a
+                href="https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex items-center justify-center bg-gradient-to-r from-primary via-primary to-secondary hover:from-secondary hover:to-primary text-primary-foreground px-10 py-6 text-xl font-bold animate-button-glow transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden border-0 rounded-lg cursor-pointer"
                 onClick={() => {
                   // Rastrear clique no CTA principal
                   trackButtonClick(
@@ -105,11 +106,6 @@ const Hero = () => {
                     button_text: "Falar com Especialista",
                     location: "hero_section",
                   });
-
-                  window.open(
-                    "https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F",
-                    "_blank"
-                  );
                 }}
               >
                 {/* Background animation */}
@@ -124,11 +120,10 @@ const Hero = () => {
                   <span className="font-extrabold">Falar com Especialista</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
                 </div>
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="group border-2 border-secondary/50 text-secondary hover:bg-secondary hover:text-secondary-foreground px-8 py-6 text-lg font-semibold transition-all duration-300 hover:shadow-lg hover:border-secondary transform hover:-translate-y-1"
+              </a>
+              <button
+                type="button"
+                className="group border-2 border-secondary/50 text-secondary hover:bg-secondary hover:text-secondary-foreground px-8 py-6 text-lg font-semibold transition-all duration-300 hover:shadow-lg hover:border-secondary transform hover:-translate-y-1 rounded-lg cursor-pointer"
                 onClick={() => {
                   // Rastrear clique no botão secundário
                   trackButtonClick(
@@ -150,7 +145,7 @@ const Hero = () => {
                   <span>Ver Problemas Comuns</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
-              </Button>
+              </button>
             </div>
           </div>
 
