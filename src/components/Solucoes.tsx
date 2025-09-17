@@ -3,6 +3,7 @@
 import { FileText, Wrench, Shield, Users, ArrowRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { trackGTMEvent, trackButtonClick, GTM_EVENTS } from "@/config/gtm";
 
 export function Solucoes() {
   const solucoesRef = useRef<HTMLDivElement>(null);
@@ -108,18 +109,28 @@ export function Solucoes() {
                 acontecer. <br /> Agora é o momento de virar o jogo!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() =>
-                    window.open(
-                      "https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20revis%C3%A3o%20do%20meu%20contrato%20e%20juros%20abusivos.%20Poderiam%20me%20ajudar%3F",
-                      "_blank"
-                    )
-                  }
-                  className="bg-white text-primary px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:bg-secondary hover:-translate-y-1 flex items-center justify-center"
+                <a
+                  href="https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white text-primary px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:bg-secondary hover:-translate-y-1 flex items-center justify-center cursor-pointer"
+                  onClick={() => {
+                    // Rastrear clique no CTA da seção Soluções
+                    trackButtonClick(
+                      "Quero defender meu veículo agora - Soluções",
+                      "solucoes_section"
+                    );
+                    trackGTMEvent(GTM_EVENTS.CLICK, {
+                      event_category: "cta",
+                      event_label: "whatsapp_solucoes",
+                      button_text: "Quero defender meu veículo agora",
+                      location: "solucoes_section",
+                    });
+                  }}
                 >
-                  Quero defender meu veículo agora
+                  Quero defender meu veículo agora
                   <ArrowRight className="h-5 w-5 ml-2" />
-                </button>
+                </a>
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 import { Instagram } from "lucide-react";
 import { WhatsAppIcon } from "./ui/whatsapp-icon";
+import { trackGTMEvent, trackButtonClick, GTM_EVENTS } from "@/config/gtm";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -114,17 +115,25 @@ export function Footer() {
 
       {/* Botão Flutuante do WhatsApp */}
       <div className="fixed bottom-6 right-6 z-50">
-        <button
-          onClick={() =>
-            window.open(
-              "https://wa.me/5577991112894/?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F",
-              "_blank"
-            )
-          }
-          className="bg-green-600 hover:bg-green-700 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+        <a
+          href="https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-600 hover:bg-green-700 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
+          aria-label="Falar no WhatsApp"
+          onClick={() => {
+            // Rastrear clique no botão WhatsApp flutuante
+            trackButtonClick("WhatsApp Flutuante - Footer", "footer_floating");
+            trackGTMEvent(GTM_EVENTS.CLICK, {
+              event_category: "cta",
+              event_label: "whatsapp_floating",
+              button_text: "WhatsApp Flutuante",
+              location: "footer_floating",
+            });
+          }}
         >
           <WhatsAppIcon />
-        </button>
+        </a>
       </div>
     </>
   );

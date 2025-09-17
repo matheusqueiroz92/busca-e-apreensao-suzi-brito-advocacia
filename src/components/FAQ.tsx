@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { trackGTMEvent, trackButtonClick, GTM_EVENTS } from "@/config/gtm";
 
 export function FAQ() {
   const faqRef = useRef<HTMLDivElement>(null);
@@ -105,14 +106,24 @@ export function FAQ() {
               Entre em contato conosco para esclarecer todas as suas dúvidas
               sobre busca e apreensão
             </p>
-            <button
-              onClick={() =>
-                window.open("https://wa.me/5571999999999", "_blank")
-              }
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg text-lg font-semibold"
+            <a
+              href="https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg text-lg font-semibold cursor-pointer inline-block"
+              onClick={() => {
+                // Rastrear clique no CTA da seção FAQ
+                trackButtonClick("Falar com Especialista - FAQ", "faq_section");
+                trackGTMEvent(GTM_EVENTS.CLICK, {
+                  event_category: "cta",
+                  event_label: "whatsapp_faq",
+                  button_text: "Falar com Especialista",
+                  location: "faq_section",
+                });
+              }}
             >
               Falar com Especialista
-            </button>
+            </a>
           </div>
         </div>
       </div>

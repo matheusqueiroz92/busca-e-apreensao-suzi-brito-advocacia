@@ -1,11 +1,11 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { ArrowRight, Award, Clock, Quote } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import { WhatsAppIcon } from "./ui/whatsapp-icon";
+import { trackGTMEvent, trackButtonClick, GTM_EVENTS } from "@/config/gtm";
 
 export function Sobre() {
   const sobreRef = useRef<HTMLDivElement>(null);
@@ -144,15 +144,24 @@ export function Sobre() {
 
             {/* CTA */}
             <div>
-              <Button
-                size="lg"
-                className="group relative bg-gradient-to-r from-primary via-primary to-secondary hover:from-secondary hover:to-primary text-primary-foreground px-10 py-6 text-xl font-bold animate-button-glow transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden border-0"
-                onClick={() =>
-                  window.open(
-                    "https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F",
-                    "_blank"
-                  )
-                }
+              <a
+                href="https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex items-center justify-center bg-gradient-to-r from-primary via-primary to-secondary hover:from-secondary hover:to-primary text-primary-foreground px-10 py-6 text-xl font-bold animate-button-glow transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden border-0 rounded-lg cursor-pointer"
+                onClick={() => {
+                  // Rastrear clique no CTA da seção Sobre
+                  trackButtonClick(
+                    "Falar com Especialista - Sobre",
+                    "sobre_section"
+                  );
+                  trackGTMEvent(GTM_EVENTS.CLICK, {
+                    event_category: "cta",
+                    event_label: "whatsapp_sobre",
+                    button_text: "Falar com Especialista",
+                    location: "sobre_section",
+                  });
+                }}
               >
                 {/* Background animation */}
                 <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -166,7 +175,7 @@ export function Sobre() {
                   <span className="font-extrabold">Falar com Especialista</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
                 </div>
-              </Button>
+              </a>
             </div>
           </div>
         </div>
