@@ -131,14 +131,18 @@ export function Header() {
                 </a>
               ))}
               <div className="flex items-center space-x-4 px-3 py-2">
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground hover:text-primary transition-colors"
-                >
-                  <Instagram className="h-5 w-5" />
-                </a>
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground hover:text-primary transition-colors"
+                    aria-label={social.name}
+                  >
+                    <social.icon className="h-5 w-5" />
+                  </a>
+                ))}
               </div>
             </div>
           </div>

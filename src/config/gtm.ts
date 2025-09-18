@@ -28,7 +28,11 @@ export const trackGTMEvent = (
       ...parameters,
     };
 
+    console.log("GTM Event disparado:", eventData);
     window.dataLayer.push(eventData);
+    console.log("DataLayer após push:", window.dataLayer);
+  } else {
+    console.warn("GTM não disponível - window.dataLayer não encontrado");
   }
 };
 

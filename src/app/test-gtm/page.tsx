@@ -34,6 +34,7 @@ export default function TestGTMPage() {
 
   const testCTA = () => {
     // Teste do CTA como implementado nos componentes
+    console.log("Disparando evento CTA...");
     trackButtonClick("Teste CTA - Página de Teste", "test_page");
     trackGTMEvent(GTM_EVENTS.CLICK, {
       event_category: "cta",
@@ -42,7 +43,9 @@ export default function TestGTMPage() {
       location: "test_page",
     });
 
-    alert("Evento CTA disparado! Verifique o GTM.");
+    // Verificar se o evento foi adicionado ao dataLayer
+    console.log("DataLayer atual:", window.dataLayer);
+    alert("Evento CTA disparado! Verifique o console e o GTM.");
   };
 
   const testContact = () => {

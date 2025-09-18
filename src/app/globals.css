@@ -289,4 +289,18 @@
   .animate-ping {
     animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
+
+  /* Garantir que todos os links tenham cursor pointer */
+  a,
+  button,
+  [role="button"] {
+    cursor: pointer !important;
+  }
+
+  /* Garantir que links tenham cursor pointer mesmo com transformações */
+  a:hover,
+  button:hover,
+  [role="button"]:hover {
+    cursor: pointer !important;
+  }
 }
