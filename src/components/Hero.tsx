@@ -5,7 +5,7 @@ import { ArrowRight, Gavel } from "lucide-react";
 import { gsap } from "gsap";
 import { WhatsAppIcon } from "./ui/whatsapp-icon";
 import Image from "next/image";
-import { trackGTMEvent, trackButtonClick, GTM_EVENTS } from "@/config/gtm";
+import { trackButtonClick } from "@/config/gtm";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -100,12 +100,6 @@ const Hero = () => {
                     "Falar com Especialista - Hero",
                     "hero_section"
                   );
-                  trackGTMEvent(GTM_EVENTS.CLICK, {
-                    event_category: "cta",
-                    event_label: "whatsapp_hero",
-                    button_text: "Falar com Especialista",
-                    location: "hero_section",
-                  });
                 }}
               >
                 {/* Background animation */}
@@ -130,12 +124,6 @@ const Hero = () => {
                     "Ver Problemas Comuns - Hero",
                     "hero_section"
                   );
-                  trackGTMEvent(GTM_EVENTS.CLICK, {
-                    event_category: "navigation",
-                    event_label: "scroll_to_problems",
-                    button_text: "Ver Problemas Comuns",
-                    location: "hero_section",
-                  });
 
                   const element = document.querySelector("#problemas");
                   element?.scrollIntoView({ behavior: "smooth" });

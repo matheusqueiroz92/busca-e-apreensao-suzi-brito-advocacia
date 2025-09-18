@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import { WhatsAppIcon } from "./ui/whatsapp-icon";
-import { trackGTMEvent, trackButtonClick, GTM_EVENTS } from "@/config/gtm";
+import { trackButtonClick } from "@/config/gtm";
 
 export function Problemas() {
   const problemasRef = useRef<HTMLDivElement>(null);
@@ -132,12 +132,6 @@ export function Problemas() {
                     "Falar com Especialista - Problemas",
                     "problemas_section"
                   );
-                  trackGTMEvent(GTM_EVENTS.CLICK, {
-                    event_category: "cta",
-                    event_label: "whatsapp_problemas",
-                    button_text: "Falar com Especialista",
-                    location: "problemas_section",
-                  });
                 }}
               >
                 {/* Background animation */}

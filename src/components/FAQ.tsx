@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { trackGTMEvent, trackButtonClick, GTM_EVENTS } from "@/config/gtm";
+import { trackButtonClick } from "@/config/gtm";
 
 export function FAQ() {
   const faqRef = useRef<HTMLDivElement>(null);
@@ -114,12 +114,6 @@ export function FAQ() {
               onClick={() => {
                 // Rastrear clique no CTA da seção FAQ
                 trackButtonClick("Falar com Especialista - FAQ", "faq_section");
-                trackGTMEvent(GTM_EVENTS.CLICK, {
-                  event_category: "cta",
-                  event_label: "whatsapp_faq",
-                  button_text: "Falar com Especialista",
-                  location: "faq_section",
-                });
               }}
             >
               Falar com Especialista

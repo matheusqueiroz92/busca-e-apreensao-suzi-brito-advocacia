@@ -2,7 +2,7 @@
 
 import { Mail, MapPin } from "lucide-react";
 import { WhatsAppIcon } from "./ui/whatsapp-icon";
-import { trackGTMEvent, trackButtonClick, GTM_EVENTS } from "@/config/gtm";
+import { trackButtonClick } from "@/config/gtm";
 import Image from "next/image";
 
 export function Footer() {
@@ -78,12 +78,6 @@ export function Footer() {
           onClick={() => {
             // Rastrear clique no botão WhatsApp flutuante
             trackButtonClick("WhatsApp Flutuante - Footer", "footer_floating");
-            trackGTMEvent(GTM_EVENTS.CLICK, {
-              event_category: "cta",
-              event_label: "whatsapp_floating",
-              button_text: "WhatsApp Flutuante",
-              location: "footer_floating",
-            });
           }}
         >
           <WhatsAppIcon />

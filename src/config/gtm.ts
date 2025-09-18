@@ -36,6 +36,40 @@ export const trackGTMEvent = (
   }
 };
 
+// Função para disparar eventos de clique que o GTM pode capturar automaticamente
+export const trackGTMClick = (
+  element: string,
+  location: string,
+  additionalData?: Record<string, unknown>
+) => {
+  if (typeof window !== "undefined" && window.dataLayer) {
+    const eventData = {
+      event: "gtm.click",
+      gtm: {
+        element: element,
+        elementClasses: "",
+        elementId: "",
+        elementTarget: "",
+        elementText: element,
+        elementUrl: "",
+        event: "gtm.click",
+        eventCategory: "engagement",
+        eventLabel: element,
+        eventAction: "click",
+        eventValue: 1,
+        location: location,
+        ...additionalData,
+      },
+    };
+
+    console.log("GTM Click Event disparado:", eventData);
+    window.dataLayer.push(eventData);
+    console.log("DataLayer após push:", window.dataLayer);
+  } else {
+    console.warn("GTM não disponível - window.dataLayer não encontrado");
+  }
+};
+
 // Função para rastrear conversões
 export const trackConversion = (
   conversionType: string,
@@ -62,9 +96,10 @@ export const trackFormSubmit = (
 
 // Função para rastrear cliques em botões
 export const trackButtonClick = (buttonName: string, location?: string) => {
-  trackGTMEvent(GTM_EVENTS.CLICK, {
+  // Usar o evento gtm.click que o GTM captura automaticamente
+  trackGTMClick(buttonName, location || "unknown", {
     event_category: "engagement",
     event_label: buttonName,
-    location: location,
+    button_text: buttonName,
   });
 };

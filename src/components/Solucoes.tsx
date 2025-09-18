@@ -3,7 +3,7 @@
 import { FileText, Wrench, Shield, Users, ArrowRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { trackGTMEvent, trackButtonClick, GTM_EVENTS } from "@/config/gtm";
+import { trackButtonClick } from "@/config/gtm";
 
 export function Solucoes() {
   const solucoesRef = useRef<HTMLDivElement>(null);
@@ -120,12 +120,6 @@ export function Solucoes() {
                       "Quero defender meu veículo agora - Soluções",
                       "solucoes_section"
                     );
-                    trackGTMEvent(GTM_EVENTS.CLICK, {
-                      event_category: "cta",
-                      event_label: "whatsapp_solucoes",
-                      button_text: "Quero defender meu veículo agora",
-                      location: "solucoes_section",
-                    });
                   }}
                 >
                   Quero defender meu veículo agora

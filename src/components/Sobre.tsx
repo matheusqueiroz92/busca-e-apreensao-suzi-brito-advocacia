@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import { WhatsAppIcon } from "./ui/whatsapp-icon";
-import { trackGTMEvent, trackButtonClick, GTM_EVENTS } from "@/config/gtm";
+import { trackButtonClick } from "@/config/gtm";
 
 export function Sobre() {
   const sobreRef = useRef<HTMLDivElement>(null);
@@ -155,12 +155,6 @@ export function Sobre() {
                     "Falar com Especialista - Sobre",
                     "sobre_section"
                   );
-                  trackGTMEvent(GTM_EVENTS.CLICK, {
-                    event_category: "cta",
-                    event_label: "whatsapp_sobre",
-                    button_text: "Falar com Especialista",
-                    location: "sobre_section",
-                  });
                 }}
               >
                 {/* Background animation */}
