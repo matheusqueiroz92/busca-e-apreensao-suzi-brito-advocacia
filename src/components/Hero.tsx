@@ -93,7 +93,7 @@ const Hero = () => {
                 href="https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center bg-gradient-to-r from-primary via-primary to-secondary hover:from-secondary hover:to-primary text-primary-foreground px-10 py-6 text-xl font-bold animate-button-glow transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden border-0 rounded-lg cursor-pointer"
+                className="group relative inline-flex items-center justify-center bg-gradient-to-r from-primary via-primary to-secondary hover:from-secondary hover:to-primary text-primary-foreground px-10 sm:px-12 lg:px-14 py-4 sm:py-5 lg:py-6 text-base sm:text-lg lg:text-xl font-bold animate-button-glow transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden border-0 rounded-lg cursor-pointer whitespace-nowrap"
                 onClick={() => {
                   // Rastrear clique no CTA principal
                   trackButtonClick(
@@ -109,15 +109,19 @@ const Hero = () => {
                 <div className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine"></div>
 
                 {/* Content */}
-                <div className="relative flex items-center space-x-3">
-                  <WhatsAppIcon />
-                  <span className="font-extrabold">Falar com Especialista</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+                <div className="relative flex items-center space-x-4 sm:space-x-5">
+                  <div className="flex-shrink-0 pl-1">
+                    <WhatsAppIcon />
+                  </div>
+                  <span className="font-extrabold text-sm sm:text-base lg:text-lg">
+                    Falar com Especialista
+                  </span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0" />
                 </div>
               </a>
               <button
                 type="button"
-                className="group border-2 border-secondary/50 text-secondary hover:bg-secondary hover:text-secondary-foreground px-8 py-6 text-lg font-semibold transition-all duration-300 hover:shadow-lg hover:border-secondary transform hover:-translate-y-1 rounded-lg cursor-pointer"
+                className="group border-2 border-secondary/50 text-secondary hover:bg-secondary hover:text-secondary-foreground px-6 sm:px-8 py-4 sm:py-5 lg:py-6 text-sm sm:text-base lg:text-lg font-semibold transition-all duration-300 hover:shadow-lg hover:border-secondary transform hover:-translate-y-1 rounded-lg cursor-pointer whitespace-nowrap"
                 onClick={() => {
                   // Rastrear clique no botão secundário
                   trackButtonClick(
@@ -130,8 +134,10 @@ const Hero = () => {
                 }}
               >
                 <span className="flex items-center space-x-2">
-                  <span>Ver Problemas Comuns</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  <span className="text-sm sm:text-base lg:text-lg">
+                    Ver Problemas Comuns
+                  </span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
               </button>
             </div>

@@ -97,27 +97,58 @@ export function FAQ() {
         </div>
 
         {/* Box de Dúvidas */}
-        <div className="bg-muted/50 rounded-lg p-8">
-          <div className="text-center">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Ainda tem dúvidas?
-            </h3>
-            <p className="text-muted-foreground mb-6">
-              Entre em contato conosco para esclarecer todas as suas dúvidas
-              sobre busca e apreensão
-            </p>
-            <a
-              href="https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg text-lg font-semibold cursor-pointer inline-block"
-              onClick={() => {
-                // Rastrear clique no CTA da seção FAQ
-                trackButtonClick("Falar com Especialista - FAQ", "faq_section");
-              }}
-            >
-              Falar com Especialista
-            </a>
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-gradient-to-br from-primary/5 via-secondary/10 to-primary/8 rounded-2xl p-12 shadow-xl border border-primary/20 backdrop-blur-sm relative overflow-hidden">
+            {/* Elementos decorativos de fundo */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full -translate-y-16 translate-x-16"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/10 rounded-full translate-y-12 -translate-x-12"></div>
+            <div className="text-center space-y-6 relative z-10">
+              <div className="space-y-4">
+                <h3 className="text-3xl font-bold text-primary leading-tight">
+                  Ainda tem dúvidas?
+                </h3>
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-lg mx-auto">
+                  Entre em contato conosco para esclarecer todas as suas dúvidas
+                  sobre busca e apreensão
+                </p>
+              </div>
+
+              <div className="pt-4">
+                <a
+                  href="https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-xl text-lg font-semibold cursor-pointer transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl shadow-lg"
+                  onClick={() => {
+                    // Rastrear clique no CTA da seção FAQ
+                    trackButtonClick(
+                      "Falar com Especialista - FAQ",
+                      "faq_section"
+                    );
+                  }}
+                >
+                  {/* Efeito de brilho sutil */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                  <span className="relative z-10">Falar com Especialista</span>
+
+                  {/* Ícone de seta */}
+                  <svg
+                    className="relative z-10 w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

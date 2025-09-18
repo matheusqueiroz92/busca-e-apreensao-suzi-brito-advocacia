@@ -107,10 +107,10 @@ export function Contato() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-16 items-stretch">
           {/* Lado Esquerdo - Informações do Escritório */}
-          <div className="space-y-8">
-            <div className="bg-primary text-white rounded-lg p-8 shadow-lg">
+          <div className="flex flex-col">
+            <div className="bg-primary text-white rounded-lg p-8 shadow-lg flex flex-col h-full">
               <h3 className="text-2xl font-bold mb-6">Fale Conosco</h3>
               <p className="text-white/90 mb-8">
                 Entre em contato conosco para uma consulta gratuita e descubra
@@ -118,7 +118,7 @@ export function Contato() {
                 apreensão.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-6 flex-1">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start gap-4">
                     <div className="bg-white/20 p-3 rounded-lg">
@@ -152,82 +152,91 @@ export function Contato() {
           </div>
 
           {/* Lado Direito - Formulário */}
-          <div className="bg-white rounded-lg p-8 shadow-lg border border-border">
-            <h3 className="text-2xl font-bold text-foreground mb-6">
-              Envie sua Mensagem
-            </h3>
+          <div className="flex flex-col">
+            <div className="bg-white rounded-lg p-8 shadow-lg border border-border flex flex-col h-full">
+              <h3 className="text-2xl font-bold text-foreground mb-6">
+                Envie sua Mensagem
+              </h3>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              <div>
-                <Label htmlFor="nome">Nome</Label>
-                <Input
-                  id="nome"
-                  {...register("nome")}
-                  placeholder="Digite seu nome completo"
-                  className="mt-1"
-                />
-                {errors.nome && (
-                  <p className="text-red-600 text-sm mt-1">
-                    {errors.nome.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  {...register("email")}
-                  placeholder="Digite seu e-mail"
-                  className="mt-1"
-                />
-                {errors.email && (
-                  <p className="text-red-600 text-sm mt-1">
-                    {errors.email.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <Label htmlFor="telefone">Telefone</Label>
-                <Input
-                  id="telefone"
-                  {...register("telefone")}
-                  placeholder="Digite seu telefone"
-                  className="mt-1"
-                />
-                {errors.telefone && (
-                  <p className="text-red-600 text-sm mt-1">
-                    {errors.telefone.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <Label htmlFor="mensagem">Mensagem</Label>
-                <Textarea
-                  id="mensagem"
-                  {...register("mensagem")}
-                  placeholder="Descreva sua situação ou dúvida"
-                  className="mt-1 min-h-[120px]"
-                />
-                {errors.mensagem && (
-                  <p className="text-red-600 text-sm mt-1">
-                    {errors.mensagem.message}
-                  </p>
-                )}
-              </div>
-
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-primary hover:bg-primary/90 text-white py-6 text-lg font-semibold"
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="space-y-6 flex flex-col flex-1"
               >
-                <Send className="h-5 w-5 mr-2" />
-                {isSubmitting ? "Enviando..." : "Enviar mensagem"}
-              </Button>
-            </form>
+                <div className="space-y-6 flex-1">
+                  <div>
+                    <Label htmlFor="nome">Nome</Label>
+                    <Input
+                      id="nome"
+                      {...register("nome")}
+                      placeholder="Digite seu nome completo"
+                      className="mt-1"
+                    />
+                    {errors.nome && (
+                      <p className="text-red-600 text-sm mt-1">
+                        {errors.nome.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      {...register("email")}
+                      placeholder="Digite seu e-mail"
+                      className="mt-1"
+                    />
+                    {errors.email && (
+                      <p className="text-red-600 text-sm mt-1">
+                        {errors.email.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <Label htmlFor="telefone">Telefone</Label>
+                    <Input
+                      id="telefone"
+                      {...register("telefone")}
+                      placeholder="Digite seu telefone"
+                      className="mt-1"
+                    />
+                    {errors.telefone && (
+                      <p className="text-red-600 text-sm mt-1">
+                        {errors.telefone.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <Label htmlFor="mensagem">Mensagem</Label>
+                    <Textarea
+                      id="mensagem"
+                      {...register("mensagem")}
+                      placeholder="Descreva sua situação ou dúvida"
+                      className="mt-1 min-h-[120px]"
+                    />
+                    {errors.mensagem && (
+                      <p className="text-red-600 text-sm mt-1">
+                        {errors.mensagem.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="mt-auto pt-6">
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary hover:bg-primary/90 text-white py-6 text-lg font-semibold"
+                  >
+                    <Send className="h-5 w-5 mr-2" />
+                    {isSubmitting ? "Enviando..." : "Enviar mensagem"}
+                  </Button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
