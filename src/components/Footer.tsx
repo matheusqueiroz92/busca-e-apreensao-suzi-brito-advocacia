@@ -84,7 +84,7 @@ export function Footer() {
           <div className="border-t border-white/20 mt-8 pt-6">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <p className="text-white/80 text-sm">
-                © Copyright Suzy Brito Advocacia OAB/BA 66.418
+                {`© Todos os direitos reservados ${new Date().getFullYear()} - Suzy Brito Advocacia - OAB/BA 66.418`}
               </p>
             </div>
           </div>
