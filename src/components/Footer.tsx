@@ -35,6 +35,7 @@ export function Footer() {
                   href="https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="botao-whatsapp"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-5 h-5 text-white flex-shrink-0">
@@ -97,7 +98,7 @@ export function Footer() {
           href="https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-green-600 hover:bg-green-700 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
+          className="botao-whatsapp bg-green-600 hover:bg-green-700 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
           aria-label="Falar no WhatsApp"
           onClick={() => {
             // Rastrear clique no botão WhatsApp flutuante

@@ -118,7 +118,7 @@ export function FAQ() {
                   href="https://wa.me/5577991112894?text=Ol%C3%A1%2C%20Suzy%20Brito%20Advocacia!%20Visitei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20busca%20e%20apreens%C3%A3o.%20Poderiam%20me%20ajudar%3F"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-xl text-lg font-semibold cursor-pointer transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl shadow-lg"
+                  className="botao-whatsapp group relative inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-xl text-lg font-semibold cursor-pointer transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl shadow-lg"
                   onClick={() => {
                     // Rastrear clique no CTA da seção FAQ
                     trackButtonClick(

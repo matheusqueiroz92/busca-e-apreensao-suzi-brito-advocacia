@@ -91,7 +91,9 @@ export function Header() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative p-3 text-muted-foreground hover:text-primary rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:shadow-lg hover:-translate-y-1"
+                className={`group relative p-3 text-muted-foreground hover:text-primary rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:shadow-lg hover:-translate-y-1 ${
+                  social.name === "WhatsApp" ? "botao-whatsapp" : ""
+                }`}
                 aria-label={social.name}
               >
                 <social.icon className="w-5 h-5 transition-all duration-300 group-hover:scale-110" />
@@ -137,7 +139,9 @@ export function Header() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-foreground hover:text-primary transition-colors"
+                    className={`text-foreground hover:text-primary transition-colors ${
+                      social.name === "WhatsApp" ? "botao-whatsapp" : ""
+                    }`}
                     aria-label={social.name}
                   >
                     <social.icon className="h-5 w-5" />

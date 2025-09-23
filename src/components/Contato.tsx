@@ -142,7 +142,7 @@ export function Contato() {
                       "_blank"
                     )
                   }
-                  className="w-full bg-green-600 hover:bg-green-700 text-white py-6 text-lg font-semibold"
+                  className="botao-whatsapp w-full bg-green-600 hover:bg-green-700 text-white py-6 text-lg font-semibold"
                 >
                   <WhatsAppIcon />
                   WhatsApp
