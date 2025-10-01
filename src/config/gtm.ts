@@ -1,5 +1,5 @@
 // Configuração do Google Tag Manager
-export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-5BZQ434J";
+export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-MKV94H7F";
 
 // Eventos personalizados que você pode usar
 export const GTM_EVENTS = {

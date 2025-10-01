@@ -73,6 +73,21 @@ export default function RootLayout({
     <html lang="pt-BR" className="scroll-smooth">
       <head>
         <GoogleTagManager gtmId={GTM_ID} />
+        {/* Google tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-16960991390"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-16960991390');
+            `,
+          }}
+        />
       </head>
       <body
         className={`${inter.variable} ${playfair.variable} antialiased bg-white text-gray-900`}
