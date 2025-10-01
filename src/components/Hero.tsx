@@ -152,6 +152,28 @@ const Hero = () => {
                     } catch (error) {
                       console.log("⚠️ Erro no pixel:", error);
                     }
+
+                    // Método 4: Beacon API (100% à prova de CSP)
+                    try {
+                      if (navigator.sendBeacon) {
+                        const beaconData = new FormData();
+                        beaconData.append("tid", "AW-16960991390");
+                        beaconData.append("t", "event");
+                        beaconData.append("en", "conversion");
+                        beaconData.append("ec", "engagement");
+                        beaconData.append("ea", "click");
+                        beaconData.append("el", "whatsapp_beacon");
+                        beaconData.append("z", Date.now().toString());
+
+                        navigator.sendBeacon(
+                          "https://www.google-analytics.com/collect",
+                          beaconData
+                        );
+                        console.log("✅ Conversão disparada via Beacon API");
+                      }
+                    } catch (error) {
+                      console.log("⚠️ Erro no Beacon:", error);
+                    }
                   }
                 }}
               >
