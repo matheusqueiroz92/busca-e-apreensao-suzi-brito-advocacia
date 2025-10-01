@@ -72,6 +72,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="scroll-smooth">
       <head>
+        {/* CSP temporariamente removido para teste */}
         <GoogleTagManager gtmId={GTM_ID} />
         {/* Google tag (gtag.js) */}
         <script

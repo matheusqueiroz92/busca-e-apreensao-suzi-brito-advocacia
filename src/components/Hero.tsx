@@ -100,6 +100,59 @@ const Hero = () => {
                     "Falar com Especialista - Hero",
                     "hero_section"
                   );
+
+                  // Disparar conversão DIRETAMENTE (sem depender do GTM)
+                  if (typeof window !== "undefined") {
+                    // Método 1: Usando gtag diretamente (comentado temporariamente)
+                    // if (window.gtag) {
+                    //   window.gtag("event", "conversion", {
+                    //     send_to: "AW-16960991390/leBXCPyK9qQbEJ7h0Jc_",
+                    //   });
+                    //   console.log("✅ Conversão disparada via gtag");
+                    // }
+
+                    // Método 2: Usando fetch como fallback (bypass CSP)
+                    try {
+                      const conversionData = new URLSearchParams({
+                        tid: "AW-16960991390",
+                        t: "event",
+                        en: "conversion",
+                        ec: "engagement",
+                        ea: "click",
+                        el: "whatsapp_button_hero",
+                      });
+
+                      // Tentar múltiplos endpoints
+                      fetch("https://www.google-analytics.com/g/collect", {
+                        method: "POST",
+                        mode: "no-cors",
+                        body: conversionData,
+                      }).catch(() => {
+                        // Fallback para endpoint alternativo
+                        return fetch(
+                          "https://www.googletagmanager.com/gtag/js",
+                          {
+                            method: "POST",
+                            mode: "no-cors",
+                            body: conversionData,
+                          }
+                        );
+                      });
+
+                      console.log("✅ Conversão disparada via fetch");
+                    } catch (error) {
+                      console.log("⚠️ Erro no fetch:", error);
+                    }
+
+                    // Método 3: Usando imagem pixel (mais compatível)
+                    try {
+                      const img = new window.Image();
+                      img.src = `https://www.google-analytics.com/collect?tid=AW-16960991390&t=event&en=conversion&ec=engagement&ea=click&el=whatsapp_pixel&z=${Date.now()}`;
+                      console.log("✅ Conversão disparada via pixel");
+                    } catch (error) {
+                      console.log("⚠️ Erro no pixel:", error);
+                    }
+                  }
                 }}
               >
                 {/* Background animation */}
